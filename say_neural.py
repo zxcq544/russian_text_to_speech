@@ -4,6 +4,9 @@ import time
 import torch
 import numpy as np
 import simpleaudio as sa
+from transliterate import translit
+from num2words import num2words
+import re
 
 
 class NeuralSpeaker:
@@ -18,17 +21,16 @@ class NeuralSpeaker:
                                            local_file)
         self.model = torch.package.PackageImporter(local_file).load_pickle("tts_models", "model")
         self.model.to(device)
-        self.model.apply_tts(text='ф',
-                             speaker='baya',
-                             sample_rate=48000, )
-        print(f'Step 1 Complete in {round(time.time() - start, 2)}')
-        self.model.apply_tts(text='ц',
-                             speaker='baya',
-                             sample_rate=48000, )
         end = time.time()
         print(f'Model ready in {round(end - start, 2)} seconds')
 
+    def num2words_ru(self, match):
+        clean_number = match.group().replace(',', '.')
+        return num2words(clean_number, lang='ru')
+
     def speak(self, words):
+        words = translit(words, 'ru')
+        words = re.sub(r'-?[0-9][0-9,\._]+', self.num2words_ru, words)
         # Текст который будет озвучен
         example_text = f'{words}'
         sample_rate = 48000
@@ -58,4 +60,3 @@ class NeuralSpeaker:
         play_obj.wait_done()
 
 # 'На дворе дрова, за двором дрова,под двором дрова, над двором дрова,дрова вдоль двора, дрова вширь двора,не вместит двор дров.Двора выдворить обратно на дровяной двор.'
-
