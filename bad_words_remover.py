@@ -3,12 +3,9 @@ import re
 
 class BadWordsRemover:
     def __init__(self, bad_words_filename='bad_words.txt'):
-        # input_string = 'негры пидарасы'
         with open(bad_words_filename, encoding='utf-8') as f:
             self.bad_words = f.read().splitlines()
-
         print(f'bad words list\n{self.bad_words}')
-        # print(f'input string\n{input_string}')
 
     def func_to_remove_bad_words(self, match):
         input_str = match.group()
