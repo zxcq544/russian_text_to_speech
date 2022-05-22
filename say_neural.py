@@ -35,7 +35,7 @@ class NeuralSpeaker:
         else:
             return
         words = translit(words, 'ru')
-        words = re.sub(r'-?[0-9][0-9,\._]+', self.num2words_ru, words)
+        words = re.sub(r'-?[0-9][0-9,._]+', self.num2words_ru, words)
         # If first letter in words is digit then it will set speakers voice
         match possible_speaker:
             case '!1':
@@ -74,5 +74,3 @@ class NeuralSpeaker:
         audio = audio.astype(np.int16)
         play_obj = sa.play_buffer(audio, 1, 2, sample_rate)
         play_obj.wait_done()
-
-# 'На дворе дрова, за двором дрова,под двором дрова, над двором дрова,дрова вдоль двора, дрова вширь двора,не вместит двор дров.Двора выдворить обратно на дровяной двор.'
