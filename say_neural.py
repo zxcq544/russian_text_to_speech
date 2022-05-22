@@ -28,13 +28,29 @@ class NeuralSpeaker:
         clean_number = match.group().replace(',', '.')
         return num2words(clean_number, lang='ru')
 
-    def speak(self, words):
+    # Speakers available: aidar, baya, kseniya, xenia, random
+    def speak(self, words, speaker='baya'):
         words = translit(words, 'ru')
         words = re.sub(r'-?[0-9][0-9,\._]+', self.num2words_ru, words)
+        # If first letter in words is digit then it will set speakers voice
+        if len(words) > 0:
+            possible_speaker = words[0]
+        else:
+            return
+        match possible_speaker:
+            case '1':
+                speaker = 'baya'
+            case '2':
+                speaker = 'aidar'
+            case '3':
+                speaker = 'kseniya'
+            case '4':
+                speaker = 'xenia'
+            case '5':
+                speaker = 'random'
         # Текст который будет озвучен
         example_text = f'{words}'
         sample_rate = 48000
-        speaker = 'baya'
 
         # Эта функция сохраняет WAV на диск
         # model.save_wav(text=example_text,
