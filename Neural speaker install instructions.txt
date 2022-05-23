@@ -1,0 +1,8 @@
+sudo apt-get install -y python3-dev libasound2-dev
+pip install simpleaudio
+
+pip install torch
+pip install numpy
+pip install websockets
+pip install num2words
+pip install transliterate
