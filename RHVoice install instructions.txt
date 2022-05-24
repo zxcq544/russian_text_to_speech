@@ -1,0 +1,25 @@
+sudo add-apt-repository ppa:linvinus/rhvoice
+sudo apt-get update
+sudo apt-get install rhvoice rhvoice-russian
+
+=== Использование ===
+1) Если вы установили пакет rhvoice то нужно выполнить команду
+echo "Проверка синтезатора речи" | RHVoice-client -s Anna+CLB | aplay
+
+=== Голоса ===
+Русский
+  aleksandr (муж.)
+  anna (жен.)
+  elena (жен.)
+  irina (жен.)
+
+Английский
+  alan (муж.)
+  clb (жен.)
+  slt (жен.)
+
+Грузинский
+  natia (жен.)
+
+Эсперанто
+  spomenka (жен.)
