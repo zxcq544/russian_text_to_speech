@@ -29,7 +29,7 @@ class NeuralSpeaker:
         return num2words(clean_number, lang='ru')
 
     # Speakers available: aidar, baya, kseniya, xenia, random
-    def speak(self, words, speaker='xenia'):
+    def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         if len(words) > 2:
             possible_speaker = words[0:2]
         else:
@@ -50,8 +50,8 @@ class NeuralSpeaker:
                 speaker = 'random'
         # Текст который будет озвучен
         example_text = f'{words}'
-        sample_rate = 48000
-
+        if sample_rate not in [48000, 24000, 12000]:
+            sample_rate = 48000
         # Эта функция сохраняет WAV на диск
         # model.save_wav(text=example_text,
         #                speaker=speaker,
@@ -59,6 +59,7 @@ class NeuralSpeaker:
         #
         # Эта часть запускает аудио на колонках.
         start = time.time()
+        print(f'Model started')
         try:
             audio = self.model.apply_tts(text=example_text,
                                          speaker=speaker,
@@ -72,5 +73,9 @@ class NeuralSpeaker:
         audio = audio.numpy()
         audio *= 32767 / np.max(np.abs(audio))
         audio = audio.astype(np.int16)
-        play_obj = sa.play_buffer(audio, 1, 2, sample_rate)
-        play_obj.wait_done()
+        wave_obj = sa.WaveObject(audio, 1, 2, sample_rate)
+        if not save_file:
+            play_obj = wave_obj.play()
+            play_obj.wait_done()
+        else:
+            return wave_obj
