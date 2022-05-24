@@ -29,7 +29,7 @@ class NeuralSpeaker:
         return num2words(clean_number, lang='ru')
 
     # Speakers available: aidar, baya, kseniya, xenia, random
-    def speak(self, words, speaker='baya'):
+    def speak(self, words, speaker='xenia'):
         if len(words) > 2:
             possible_speaker = words[0:2]
         else:
