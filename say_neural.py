@@ -68,8 +68,8 @@ class NeuralSpeaker:
             print('Bad input')
             return
         end = time.time()
-        time_lapsed = end - start
-        print(f'Model applied in {round(time_lapsed, 2)} seconds')
+        time_elapsed = round(end - start, 2)
+        print(f'Model applied in {time_elapsed} seconds')
         audio = audio.numpy()
         audio *= 32767 / np.max(np.abs(audio))
         audio = audio.astype(np.int16)
@@ -77,5 +77,6 @@ class NeuralSpeaker:
         if not save_file:
             play_obj = wave_obj.play()
             play_obj.wait_done()
+            return {'Model completed in': f'{time_elapsed} seconds'}
         else:
             return wave_obj
