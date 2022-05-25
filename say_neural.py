@@ -63,4 +63,4 @@ class NeuralSpeaker:
             play_obj.wait_done()
             return {'Model completed in': f'{time_elapsed} seconds'}
         else:
-            return wave_obj
+            return wave_obj.audio_data
