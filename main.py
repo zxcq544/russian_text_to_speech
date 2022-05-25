@@ -11,7 +11,7 @@ app = FastAPI()
 
 
 @app.get("/")
-async def root(words: str, speaker='xenia', save_file=False, sample_rate=48000):
+async def root(words: str, speaker :str ='xenia', save_file :bool =False, sample_rate:int=48000):
     print(f'{words}, {speaker}, {save_file} ,{sample_rate}')
     audio_or_text = neural_speaker.speak(words=words, speaker=speaker, save_file=save_file, sample_rate=sample_rate)
     if save_file:
