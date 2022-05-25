@@ -10,6 +10,11 @@ neural_speaker = NeuralSpeaker()
 app = FastAPI()
 
 
+# Speakers available: aidar, baya, kseniya, xenia, random
+# Speaker could be set using special chars in message like '!1 Hello' will set speaker to aidar
+# and '!2 Hello' will set speaker to baya
+
+
 @app.get("/")
 async def speak(words: str, speaker: str = 'xenia', sample_rate: int = 48000):
     print(f'speak {words}, {speaker}, {sample_rate}')

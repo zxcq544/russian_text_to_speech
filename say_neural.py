@@ -29,9 +29,25 @@ class NeuralSpeaker:
         return num2words(clean_number, lang='ru')
 
     # Speakers available: aidar, baya, kseniya, xenia, random
+    # Speaker could be set in message using !1, !2 and alike starting chars
     def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         words = translit(words, 'ru')
         words = re.sub(r'-?[0-9][0-9,._]+', self.num2words_ru, words)
+        if len(words) > 3:
+            possible_speaker = words[0:2]
+        else:
+            return
+        match possible_speaker:
+            case '!1':
+                speaker = 'aidar'
+            case '!2':
+                speaker = 'baya'
+            case '!3':
+                speaker = 'ksenia'
+            case '!4':
+                speaker = 'xenia'
+            case '!5':
+                speaker = 'random'
         # Текст который будет озвучен
         example_text = f'{words}'
         if sample_rate not in [48000, 24000, 12000]:
