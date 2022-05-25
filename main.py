@@ -11,14 +11,16 @@ app = FastAPI()
 
 
 @app.get("/")
-async def root(words: str, speaker: str = 'xenia', sample_rate: int = 48000):
+async def speak(words: str, speaker: str = 'xenia', sample_rate: int = 48000):
     print(f'{words}, {speaker}, {sample_rate}')
-    text_response = neural_speaker.speak(words=words, speaker=speaker, save_file=False, sample_rate=sample_rate)
-    return text_response
+    time_elapsed = neural_speaker.speak(words=words, speaker=speaker, save_file=False, sample_rate=sample_rate)
+    print(f'Model completed in {time_elapsed} seconds')
+    json_response = {'Response': f'Model completed in {time_elapsed} seconds'}
+    return json_response
 
 
-@app.get("/save_file")
-async def root(words: str, speaker: str = 'xenia', sample_rate: int = 48000):
+@app.get("/get_audio_file")
+async def return_audio_file(words: str, speaker: str = 'xenia', sample_rate: int = 48000):
     print(f'{words}, {speaker}, {sample_rate}')
     audio_data = neural_speaker.speak(words=words, speaker=speaker, save_file=True, sample_rate=sample_rate)
     f = io.BytesIO()

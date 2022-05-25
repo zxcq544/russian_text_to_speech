@@ -61,6 +61,6 @@ class NeuralSpeaker:
         if not save_file:
             play_obj = wave_obj.play()
             play_obj.wait_done()
-            return {'Model completed in': f'{time_elapsed} seconds'}
+            return time_elapsed
         else:
             return wave_obj.audio_data
