@@ -29,6 +29,6 @@ async def root(words: str, speaker: str = 'xenia', sample_rate: int = 48000):
     wav_file_in_memory.writeframes(audio_data)
     wav_file_in_memory.close()
     f.seek(0)
-    response = StreamingResponse(content=f, media_type="audio/wav")
-    response.headers["Content-Disposition"] = f"attachment; filename = speech_audio.wav"
-    return response
+    audio_file_response = StreamingResponse(content=f, media_type="audio/wav")
+    audio_file_response.headers["Content-Disposition"] = f"attachment; filename = speech_audio.wav"
+    return audio_file_response
