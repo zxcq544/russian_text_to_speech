@@ -53,6 +53,8 @@ class NeuralSpeaker:
         example_text = f'{words}'
         if sample_rate not in [48000, 24000, 12000]:
             sample_rate = 48000
+        if speaker not in ['aidar','baya','kseniya','xenia','random']:
+            speaker = 'xenia'
         # Эта функция сохраняет WAV на диск
         # model.save_wav(text=example_text,
         #                speaker=speaker,
