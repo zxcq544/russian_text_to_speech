@@ -33,7 +33,7 @@ class NeuralSpeaker:
     def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         words = translit(words, 'ru')
         words = re.sub(r'-?[0-9][0-9,._]*', self.num2words_ru, words)
-        print(words)
+        print(f'text after translit and num2words {words}')
         if len(words) > 3:
             possible_speaker = words[0:2]
         else:
