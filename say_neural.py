@@ -32,7 +32,8 @@ class NeuralSpeaker:
     # Speaker could be set in message using !1, !2 and alike starting chars
     def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         words = translit(words, 'ru')
-        words = re.sub(r'-?[0-9][0-9,._]+', self.num2words_ru, words)
+        words = re.sub(r'-?[0-9][0-9,._]*', self.num2words_ru, words)
+        print(words)
         if len(words) > 3:
             possible_speaker = words[0:2]
         else:

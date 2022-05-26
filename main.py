@@ -16,8 +16,8 @@ app = FastAPI()
 # and '!2 Hello' will set speaker to baya
 
 
-@app.get("/")
-async def show_examples(response_class=HTMLResponse):
+@app.get("/", response_class=HTMLResponse)
+async def show_examples():
     examples = '''Hello. To use this text to speech API try following URLs:<br/>
     1. To speak on local computer use URL <a href='/speak?words=Привет&speaker=xenia&sample_rate=48000'>/speak?words=Привет&speaker=xenia&sample_rate=48000</a><br/> 
     This will say words using speaker with sample rate. Allowed speakers are: aidar,baya, ksenia,xenia, random.<br/>
