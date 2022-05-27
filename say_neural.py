@@ -50,7 +50,7 @@ class NeuralSpeaker:
                 speaker = 'random'
         # Текст который будет озвучен
         example_text = f'{words}'
-        if sample_rate not in [48000, 24000, 12000]:
+        if sample_rate not in [48000, 24000, 8000]:
             sample_rate = 48000
         # Эта функция сохраняет WAV на диск
         # model.save_wav(text=example_text,

@@ -3,27 +3,24 @@ import wave
 
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from starlette.responses import StreamingResponse
+from starlette.responses import StreamingResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from say_neural import NeuralSpeaker
 
 neural_speaker = NeuralSpeaker()
-app = FastAPI()
-
+app = FastAPI(title='main app')
 
 # Speakers available: aidar, baya, kseniya, xenia, random
 # Speaker could be set using special chars in message like '!1 Hello' will set speaker to aidar
 # and '!2 Hello' will set speaker to baya
 
+app.mount("/public", StaticFiles(directory="public", html=True), name="public")
+
 
 @app.get("/")
-async def show_examples(response_class=HTMLResponse):
-    examples = '''Hello. To use this text to speech API try following URLs:<br/>
-    1. To speak on local computer use URL <a href='/speak?words=Привет&speaker=xenia&sample_rate=48000'>/speak?words=Привет&speaker=xenia&sample_rate=48000</a><br/> 
-    This will say words using speaker with sample rate. Allowed speakers are: aidar,baya, ksenia,xenia, random.<br/>
-    Random will generate random voice each time. sample_rate should be one of 48000,24000,12000.<br/><br/>
-    2. To get audio file of text to speech use <a href='/get_audio_file?words=Привет&speaker=baya&sample_rate=48000'>/get_audio_file?words=Привет&speaker=baya&sample_rate=48000</a>'''
-    return HTMLResponse(content=examples, status_code=200)
+async def index_html():
+    return FileResponse('public/index.html')
 
 
 @app.get("/speak")
