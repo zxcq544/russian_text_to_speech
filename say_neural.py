@@ -32,7 +32,8 @@ class NeuralSpeaker:
     # Speaker could be set in message using !1, !2 and alike starting chars
     def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         words = translit(words, 'ru')
-        words = re.sub(r'-?[0-9][0-9,._]+', self.num2words_ru, words)
+        words = re.sub(r'-?[0-9][0-9,._]*', self.num2words_ru, words)
+        print(f'text after translit and num2words {words}')
         if len(words) > 3:
             possible_speaker = words[0:2]
         else:
@@ -52,6 +53,8 @@ class NeuralSpeaker:
         example_text = f'{words}'
         if sample_rate not in [48000, 24000, 8000]:
             sample_rate = 48000
+        if speaker not in ['aidar','baya','kseniya','xenia','random']:
+            speaker = 'xenia'
         # Эта функция сохраняет WAV на диск
         # model.save_wav(text=example_text,
         #                speaker=speaker,
