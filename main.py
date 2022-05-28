@@ -16,6 +16,13 @@ app = FastAPI(title='main app')
 
 app.mount("/public", StaticFiles(directory="public", html=True), name="public")
 
+favicon_path = 'favicon.ico'
+
+
+@app.get('/favicon.ico')
+async def favicon():
+    return FileResponse(favicon_path)
+
 
 @app.get("/")
 async def index_html():
