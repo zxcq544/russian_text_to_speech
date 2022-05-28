@@ -2,11 +2,10 @@ import io
 import wave
 
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
-from starlette.responses import StreamingResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.responses import StreamingResponse, FileResponse
 
-from say_neural import NeuralSpeaker
+from NeuralSpeaker import NeuralSpeaker
 
 neural_speaker = NeuralSpeaker()
 app = FastAPI(title='main app')

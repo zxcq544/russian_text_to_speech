@@ -19,12 +19,13 @@ class NeuralSpeaker:
         if not os.path.isfile(local_file):
             torch.hub.download_url_to_file('https://models.silero.ai/models/tts/ru/ru_v3.pt',
                                            local_file)
-        self.model = torch.package.PackageImporter(local_file).load_pickle("tts_models", "model")
-        self.model.to(device)
+        self.__model = torch.package.PackageImporter(local_file).load_pickle("tts_models", "model")
+        self.__model.to(device)
         end = time.time()
         print(f'Model ready in {round(end - start, 2)} seconds')
 
-    def num2words_ru(self, match):
+    @staticmethod
+    def __num2words_ru(match):
         clean_number = match.group().replace(',', '.')
         return num2words(clean_number, lang='ru')
 
@@ -32,7 +33,7 @@ class NeuralSpeaker:
     # Speaker could be set in message using !1, !2 and alike starting chars
     def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         words = translit(words, 'ru')
-        words = re.sub(r'-?[0-9][0-9,._]*', self.num2words_ru, words)
+        words = re.sub(r'-?[0-9][0-9,._]*', self.__num2words_ru, words)
         print(f'text after translit and num2words {words}')
         if len(words) > 3:
             possible_speaker = words[0:2]
@@ -53,7 +54,7 @@ class NeuralSpeaker:
         example_text = f'{words}'
         if sample_rate not in [48000, 24000, 8000]:
             sample_rate = 48000
-        if speaker not in ['aidar','baya','kseniya','xenia','random']:
+        if speaker not in ['aidar', 'baya', 'kseniya', 'xenia', 'random']:
             speaker = 'xenia'
         # Эта функция сохраняет WAV на диск
         # model.save_wav(text=example_text,
@@ -64,9 +65,9 @@ class NeuralSpeaker:
         start = time.time()
         print(f'Model started')
         try:
-            audio = self.model.apply_tts(text=example_text,
-                                         speaker=speaker,
-                                         sample_rate=sample_rate, )
+            audio = self.__model.apply_tts(text=example_text,
+                                           speaker=speaker,
+                                           sample_rate=sample_rate, )
         except ValueError:
             print('Bad input')
             return
