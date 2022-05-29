@@ -1,10 +1,10 @@
 ## About
 This text to speach works using [Silero neural network](https://github.com/snakers4/silero-models) which is 
 optimized for russian language. Numbers are turned to russian words using num2words and english words are transliterated.
-
-На дворе трава, на траве дрова: раз дрова, два дрова, три дрова. На дворе трава, на траве дрова — раз дрова, два дрова, три дрова: дрова вдоль двора, дрова вширь двора, не вместит двор дров, надо дрова выдворить обратно со двора.
+By default it uses cpu and 4 cores but you can switch to cuda in NeuralSpeaker.py
 
 ## Voice sound examples
+Text used as example: На дворе трава, на траве дрова: раз дрова, два дрова, три дрова. На дворе трава, на траве дрова — раз дрова, два дрова, три дрова: дрова вдоль двора, дрова вширь двора, не вместит двор дров, надо дрова выдворить обратно со двора.
 
 aidar
 ![aidar](./voice_examples/aidar.mp4)
@@ -31,6 +31,7 @@ pip install "uvicorn[standard]"
 ```
 
 #### Linux
+Install gcc if you need to. Then:
 ```bash
 sudo apt-get install -y python3-dev libasound2-dev
 pip install simpleaudio
