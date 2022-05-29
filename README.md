@@ -2,6 +2,20 @@
 This text to speach works using [Silero neural network](https://github.com/snakers4/silero-models) which is 
 optimized for russian language. Numbers are turned to russian words using num2words and english words are transliterated.
 
+На дворе трава, на траве дрова: раз дрова, два дрова, три дрова. На дворе трава, на траве дрова — раз дрова, два дрова, три дрова: дрова вдоль двора, дрова вширь двора, не вместит двор дров, надо дрова выдворить обратно со двора.
+
+## Voice sound examples
+
+aidar
+![aidar](./voice_examples/aidar.mp4)
+baya
+![baya](./voice_examples/baya.mp4)
+kseniya
+![kseniya](./voice_examples/kseniya.mp4)
+xenia
+![xenia](./voice_examples/xenia.mp4)
+random
+![random](./voice_examples/random.mp4)
 ## Install dependencies
 Needs python 3.10 or newer
 
