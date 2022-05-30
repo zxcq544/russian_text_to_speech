@@ -6,16 +6,17 @@ By default it uses cpu and 4 cores but you can switch to cuda in NeuralSpeaker.p
 ## Voice sound examples
 Text used as example: На дворе трава, на траве дрова: раз дрова, два дрова, три дрова. На дворе трава, на траве дрова — раз дрова, два дрова, три дрова: дрова вдоль двора, дрова вширь двора, не вместит двор дров, надо дрова выдворить обратно со двора.
 
-aidar
-![aidar](./voice_examples/aidar.mp4)
-baya
-![baya](./voice_examples/baya.mp4)
-kseniya
-![kseniya](./voice_examples/kseniya.mp4)
-xenia
-![xenia](./voice_examples/xenia.mp4)
-random
-![random](./voice_examples/random.mp4)
+
+https://user-images.githubusercontent.com/5781268/171030534-3a6cb639-5dcf-41d9-a9e8-345e2e007ca5.mp4
+
+https://user-images.githubusercontent.com/5781268/171030551-85d08f59-8cd5-4630-95a4-edd8ca5cafb8.mp4
+
+https://user-images.githubusercontent.com/5781268/171030565-b2a8cf5c-28c0-4695-ab86-da01a1c9cc32.mp4
+
+https://user-images.githubusercontent.com/5781268/171030261-eb450f8b-238c-4a90-91b7-62f8b8159ebe.mp4
+
+https://user-images.githubusercontent.com/5781268/171030556-c3228ab5-468b-495d-9ca3-064cc12543ac.mp4
+
 ## Install dependencies
 Needs python 3.10 or newer
 
