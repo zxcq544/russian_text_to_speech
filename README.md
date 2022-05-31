@@ -22,26 +22,14 @@ Needs python 3.10 or newer
 
 #### Windows
 ```bash
-pip install simpleaudio
-pip install torch
-pip install numpy
-pip install num2words
-pip install transliterate
-pip install fastapi
-pip install "uvicorn[standard]"
+pip install -r requirements.txt
 ```
 
 #### Linux
 Install gcc if you need to. Then:
 ```bash
 sudo apt-get install -y python3-dev libasound2-dev
-pip install simpleaudio
-pip install torch
-pip install numpy
-pip install num2words
-pip install transliterate
-pip install fastapi
-pip install "uvicorn[standard]"
+pip install -r requirements.txt
 ```
 
 

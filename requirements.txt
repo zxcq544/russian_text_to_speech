@@ -1,0 +1,7 @@
+simpleaudio
+torch
+numpy
+num2words
+transliterate
+fastapi
+uvicorn[standard]
