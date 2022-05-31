@@ -58,8 +58,8 @@ new voice each time
 3. `sample_rate` - sets output audio sample rate. Available options are `8000`, `24000`, `48000`.
 
 #### Generate and download audio
-Visit <http://localhost:8000/get_audio_file?words=Привет&speaker=xenia&sample_rate=48000> to generate and download  
-audio file. Parameters for `get_audio_file` are same as for `speak`
+Visit <http://localhost:8000/get_audio_file?words=Привет&speaker=xenia&sample_rate=48000> to generate and download audio file.
+Parameters for `get_audio_file` are same as for `speak`
 
 #### OpenAPI generated docs
 
