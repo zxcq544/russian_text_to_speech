@@ -10,7 +10,7 @@ from NeuralSpeaker import NeuralSpeaker
 neural_speaker = NeuralSpeaker()
 app = FastAPI(title='main app')
 
-# Speakers available: aidar, baya, kseniya, xenia, random
+# Speakers available: aidar, baya, kseniya, xenia, eugene, random
 # Speaker could be set using special chars in message like '!1 Hello' will set speaker to aidar
 # and '!2 Hello' will set speaker to baya
 

@@ -53,7 +53,7 @@ Visit <http://localhost:8000/speak?words=Привет&speaker=xenia&sample_rate=
 
 Here you can set 3 parameters:
 1. `words` - phrase that you want to pronounce 
-2. `speaker` - voice to use. Available voices are: `aidar`, `baya`, `kseniya`, `xenia`, `random`.`random` generates 
+2. `speaker` - voice to use. Available voices are: `aidar`, `baya`, `kseniya`, `xenia`, `eugene`, `random`.`random` generates 
 new voice each time
 3. `sample_rate` - sets output audio sample rate. Available options are `8000`, `24000`, `48000`.
 

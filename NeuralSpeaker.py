@@ -17,7 +17,7 @@ class NeuralSpeaker:
         torch.set_num_threads(4)
         local_file = 'model.pt'
         if not os.path.isfile(local_file):
-            torch.hub.download_url_to_file('https://models.silero.ai/models/tts/ru/ru_v3.pt',
+            torch.hub.download_url_to_file('https://models.silero.ai/models/tts/ru/v3_1_ru.pt',
                                            local_file)
         self.__model = torch.package.PackageImporter(local_file).load_pickle("tts_models", "model")
         self.__model.to(device)
@@ -29,7 +29,7 @@ class NeuralSpeaker:
         clean_number = match.group().replace(',', '.')
         return num2words(clean_number, lang='ru')
 
-    # Speakers available: aidar, baya, kseniya, xenia, random
+    # Speakers available: aidar, baya, kseniya, xenia, eugene, random
     # Speaker could be set in message using !1, !2 and alike starting chars
     def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         words = translit(words, 'ru')
@@ -49,12 +49,14 @@ class NeuralSpeaker:
             case '!4':
                 speaker = 'xenia'
             case '!5':
+                speaker = 'eugene'
+            case '!0':
                 speaker = 'random'
         # Текст который будет озвучен
         example_text = f'{words}'
         if sample_rate not in [48000, 24000, 8000]:
             sample_rate = 48000
-        if speaker not in ['aidar', 'baya', 'kseniya', 'xenia', 'random']:
+        if speaker not in ['aidar', 'baya', 'kseniya', 'xenia', 'eugene', 'random']:
             speaker = 'xenia'
         # Эта функция сохраняет WAV на диск
         # model.save_wav(text=example_text,

@@ -36,6 +36,7 @@
         <option>baya</option>
         <option>kseniya</option>
         <option>xenia</option>
+        <option>eugene</option>
         <option>random</option>
     </select>
     <label for="sample_rate">Sample Rate, Hz</label>
