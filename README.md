@@ -3,6 +3,8 @@ This text to speach works using [Silero neural network](https://github.com/snake
 optimized for russian language. Numbers are turned to russian words using num2words and english words are transliterated.
 By default it uses cpu and 4 cores but you can switch to cuda in NeuralSpeaker.py
 
+You can test this model here https://colab.research.google.com/github/snakers4/silero-models/blob/master/examples_tts.ipynb
+
 ## Voice sound examples
 Text used as example: На дворе трава, на траве дрова: раз дрова, два дрова, три дрова. На дворе трава, на траве дрова — раз дрова, два дрова, три дрова: дрова вдоль двора, дрова вширь двора, не вместит двор дров, надо дрова выдворить обратно со двора.
 
