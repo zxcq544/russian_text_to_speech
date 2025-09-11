@@ -1,0 +1,16 @@
+services:
+  silero-tts:
+    build: .
+    container_name: silero_tts
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    env_file:
+      - .env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

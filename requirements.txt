@@ -5,3 +5,4 @@ num2words
 transliterate
 fastapi
 uvicorn[standard]
+python-dotenv
