@@ -43,7 +43,9 @@ class NeuralSpeaker:
     def __num2words_ru(match):
         clean_number = match.group().replace(',', '.')
         return num2words(clean_number, lang='ru')
-
+    
+    # Speakers available: aidar, baya, kseniya, xenia, eugene, random
+    # Speaker could be set in message using !1, !2 and alike starting chars
     def speak(self, words, speaker='xenia', save_file=False, sample_rate=48000):
         words = translit(words, 'ru')
         words = re.sub(r'-?[0-9][0-9,._]*', self.__num2words_ru, words)
@@ -65,13 +67,18 @@ class NeuralSpeaker:
                 speaker = 'eugene'
             case '!0':
                 speaker = 'random'
-
+        # Текст который будет озвучен
         example_text = f'{words}'
         if sample_rate not in [48000, 24000, 8000]:
             sample_rate = 48000
         if speaker not in ['aidar', 'baya', 'kseniya', 'xenia', 'eugene', 'random']:
             speaker = 'xenia'
-
+         # Эта функция сохраняет WAV на диск
+        # model.save_wav(text=example_text,
+        #                speaker=speaker,
+        #                sample_rate=sample_rate)
+        #
+        # Эта часть запускает аудио на колонках.
         start = time.time()
         print(f'Model started')
         try:
